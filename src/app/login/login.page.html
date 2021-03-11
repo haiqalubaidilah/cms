@@ -1,0 +1,56 @@
+<ion-content>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <div id="overlay">
+        <div id="text">
+          <h1>KUPTM</h1>
+          <h5>Campus Management System</h5>
+        </div>
+      </div>
+      <img src="/assets/kuptm.jpg" alt="KUPTM" />
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-card class="ion-padding" style="margin-top: 20%">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input required type="email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input required type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+
+    <div class="ion-text-center btn-padding">
+      <ion-button
+        color="primary"
+        (click)="login(user)"
+        type="submit"
+        expand="block"
+        fill="solid"
+        shape="round"
+        style="text-transform: none"
+      >
+        Login
+      </ion-button>
+
+      <ion-button
+        [routerLink]="['/login-issue']" 
+        expand="block"
+        fill="clear"
+        shape="round"
+        style="text-transform: none"
+      >
+        Having issues?
+      </ion-button>
+    </div>
+  </ion-card>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-text id="copyright" class="ion-text-center">
+      <p>Copyright © 2021 KUPTM Sdn. Bhd. All Rights Reserved</p>
+    </ion-text>
+  </ion-toolbar>
+</ion-footer>

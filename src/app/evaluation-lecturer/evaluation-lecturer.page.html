@@ -1,0 +1,388 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lecturer Evaluation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header *ngIf="(subjectsInfo | json) != '{}'">
+      <ion-card-title>
+        <h6 style="margin-block: 0;">
+          Lecturer: {{ subjectsInfo.lecturerName }}
+        </h6>
+      </ion-card-title>
+      <ion-card-subtitle>
+        <p>Subject: {{ subjectsInfo.name }} ({{ subjectsInfo.code}})</p>
+        <p>Section: {{ subjectsInfo.section }}</p>
+        <p>Credit Hour: {{ subjectsInfo.creditHr }}</p>
+        <p style="margin-block-end: 0;">Contact Hour: {{ subjectsInfo.contactHr }}</p>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <!-- loading animation -->
+    <ion-card-header *ngIf="(subjectsInfo | json) == '{}'">
+      <ion-card-title>
+        <h6 style="margin-block: 0;">
+          <ion-skeleton-text animated style="width: 90%; line-height: 1rem"></ion-skeleton-text>
+        </h6>
+      </ion-card-title>
+      <ion-card-subtitle>
+        <p><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></p>
+        <p><ion-skeleton-text animated style="width: 20%"></ion-skeleton-text></p>
+        <p><ion-skeleton-text animated style="width: 20%"></ion-skeleton-text></p>
+        <p style="margin-block-end: 0;"><ion-skeleton-text animated style="width: 20%"></ion-skeleton-text></p>
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <h6 style="margin-block: 0;">
+          Please indicate your response to the statement according to the
+          following scale:
+        </h6>
+      </ion-card-title>
+      <ion-card-subtitle>
+        <p>5: Excellent (Cemerlang)</p>
+        <p>4: Good (Bagus)</p>
+        <p>3: Satisfactory (Memuaskan)</p>
+        <p>2: Weak (Lemah)</p>
+        <p style="margin-block-end: 0;">1: Very Weak (Sangat Lemah)</p>
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <!-- evaluation questions -->
+  <ion-card>
+    <ion-list>
+      <div
+        class="ion-padding ion-text-center"
+        *ngIf="evaluate.isEvaluated"
+      >
+        <ion-label color="danger"
+          >Looks like you have evaluated this leturer!</ion-label
+        >
+      </div>
+      <ion-list-header>
+        <ion-label>
+          <strong>A. Presentation</strong>
+        </ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>1. Penyampaian isi kandungan jelas </ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.a1"
+          required
+        >
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>2. Penekanan isi penting</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.a2"
+          required
+        >
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>3. Lontaran vokal kejelasan suara</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.a3"
+          required
+        >
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>4. Tempo penyampaian</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.a4"
+          required
+        >
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>5. Keyakinan diri</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.a5"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <strong>B. Method and Approaches</strong>
+        </ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>1. Penggunaan alat bantu mengajar</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.b1"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>2. Penggunaan contoh dan analogi</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.b2"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>3. Menggalakkan penglibatan pelajar</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.b3"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>4. Mencadang rujukan dan pautan yang berkaitan</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.b4"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>5. Mendorong pembelajaran kendiri</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.b5"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <strong>C. Class Management</strong>
+        </ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>1. Mengekalkan perhatian dan minat pelajar</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.c1"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>2. Peka kepada keperluan pelajar</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.c2"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>3. Maklumbalas terhadap kerja kursus</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.c3"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>4. Hubungan antara pelajar-pensyarah</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.c4"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <strong>D. Personal Conduct and Discpline</strong>
+        </ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>1. Penampilan diri</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.d1"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>2. Sikap bertanggungjawab</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.d2"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>3. Berakhlak dan disenangi</ion-label>
+        <ion-select
+          [disabled]="evaluate.isEvaluated"
+          value="5"
+          [(ngModel)]="evaluate.d3"
+          required
+        >
+          <ion-select-option selected value="5">5</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list-header>
+      <ion-label>
+        <strong>F. Additional Remarks</strong>
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item lines="none">
+      <ion-textarea
+        [disabled]="evaluate.isEvaluated"
+        autoGrow="true"
+        placeholder="Describe here..."
+        [(ngModel)]="evaluate.additional"
+      ></ion-textarea>
+    </ion-item>
+  </ion-card>
+
+  <ion-button
+    class="ion-margin"
+    color="primary"
+    [disabled]="evaluate.isEvaluated"
+    (click)="createEvaluation(evaluate)"
+    type="submit"
+    expand="block"
+    fill="solid"
+    shape="rectangle"
+  >
+    Submit
+  </ion-button>
+</ion-content>

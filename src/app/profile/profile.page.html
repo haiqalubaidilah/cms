@@ -1,0 +1,454 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title style="margin: 16px 0;">Profile</ion-title>
+    <ion-segment [(ngModel)]="segment" scrollable="true" mode="md">
+      <ion-segment-button value="home">
+        <ion-label>Personal</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="parent">
+        <ion-label>Parent</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="sponsor">
+        <ion-label>Sponsor</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="hostel">
+        <ion-label>Hostel</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <!-- <ion-button
+    class="ion-margin"
+    (click)="showPopover()"
+    expand="block"
+    fill="solid"
+    shape="rectangle"
+  >
+    Click to navigate
+  </ion-button> -->
+
+  <div *ngIf="segment == 'home'" class="ion-margin">
+    <ion-label>
+      <strong>Student Name:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 50%"></ion-skeleton-text>
+      <h3 >{{ personal.name }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>IC No:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 >{{ personal.ic }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>ID No:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 >{{ personal.studentId }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Address No:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.address }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Postcode:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 >{{ personal.postcode }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>State:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 >{{ personal.state }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>City:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 >{{ personal.city }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Country:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.country }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Phone No:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.phone }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Gender:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 >{{ personal.gender }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Race:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.race }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Religion:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.religion }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Email:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.email }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Course:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.course }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Course Name:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.courseName }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Program:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.program }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Registration Date:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.dateRegistered }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Session:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.session }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Sem. Registration Date:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.dateSemRegistered }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Semester:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.sem }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Active:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.active }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Course Status:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.courseStatus }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Advisor:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.advisorName }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Date of Birth:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.dateBirth }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Place of Birth:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.placeBirth }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Status:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.status }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Citizen:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.citizen }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Nationality:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.nationality }}</h3> <br>
+    </ion-label>
+    <ion-label>
+      <strong>Email KPTM:</strong> <br />
+      <ion-skeleton-text *ngIf="(personal | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 >{{ personal.kptmEmail }}</h3> <br>
+    </ion-label>
+  </div>
+
+  <div *ngIf="segment == 'parent'" class="ion-margin">
+    <ion-title class="ion-text-center ion-margin"><strong>Father's info</strong></ion-title>
+
+    <ion-label>
+      <strong>Father's Name:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.fatherName">{{ parent.fatherName }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Father's IC No:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.fatherIC">{{ parent.fatherIC }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Father's Contact No:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.fatherContact">{{ parent.fatherContact }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Father's Race:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.fatherRace">{{ parent.fatherRace }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Father's Citizen:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.fatherCitizen">{{ parent.fatherCitizen }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Father's Occupation:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.fatherOccupation">{{ parent.fatherOccupation }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Father's Salary:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.fatherSalary">{{ parent.fatherSalary }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-title class="ion-text-center ion-margin"><strong>Mother's info</strong></ion-title>
+
+    <ion-label>
+      <strong>Mother's Name:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.motherName">{{ parent.motherName }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Mother's IC No:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.motherIC">{{ parent.motherIC }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Mother's Contact No:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.motherContact">{{ parent.motherContact }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Mother's Race:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.motherRace">{{ parent.motherRace }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Mother's Race:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.motherCitizen">{{ parent.motherCitizen }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Mother's Occupation:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.motherOccupation">{{ parent.motherOccupation }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Mother's Salary:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.motherSalary">{{ parent.motherSalary }}</h3>
+      <br />
+    </ion-label>
+
+
+    <ion-title class="ion-text-center ion-margin"><strong>Address Info</strong></ion-title>
+    <ion-label>
+      <strong>Address:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.address">{{ parent.address }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>City:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.city">{{ parent.city }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Postcode:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.postcode">{{ parent.postcode }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>State:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.state">{{ parent.state }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Country:</strong> <br />
+      <ion-skeleton-text *ngIf="(parent | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="parent.country">{{ parent.country }}</h3>
+      <br />
+    </ion-label>
+  </div>
+
+  <div *ngIf="segment == 'sponsor'" class="ion-margin" >
+    <ion-label>
+      <strong>IC No:</strong> <br />
+      <ion-skeleton-text *ngIf="(sponsor | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="sponsor.ic">{{ sponsor.ic }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Sponsor No:</strong> <br />
+      <ion-skeleton-text *ngIf="(sponsor | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="sponsor.sponsorNo">{{ sponsor.sponsorNo }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Sponsor Name:</strong> <br />
+      <ion-skeleton-text *ngIf="(sponsor | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="sponsor.sponsorName">{{ sponsor.sponsorName }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Total:</strong> <br />
+      <ion-skeleton-text *ngIf="(sponsor | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 *ngIf="sponsor.total">{{ sponsor.total }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Start Date:</strong> <br />
+      <ion-skeleton-text *ngIf="(sponsor | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 *ngIf="sponsor.startDate">{{ sponsor.startDate }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>End Date:</strong> <br />
+      <ion-skeleton-text *ngIf="(sponsor | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 *ngIf="sponsor.endDate">{{ sponsor.endDate }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Sponsor Type:</strong> <br />
+      <ion-skeleton-text *ngIf="(sponsor | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 *ngIf="sponsor.sponsorType">{{ sponsor.sponsorType }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Status:</strong> <br />
+      <ion-skeleton-text *ngIf="(sponsor | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 *ngIf="sponsor.status">{{ sponsor.status }}</h3>
+      <br />
+    </ion-label>
+  </div>
+
+  <div *ngIf="segment == 'hostel'" class="ion-margin">
+    <ion-title class="ion-text-center ion-margin"><strong>In Hostel</strong></ion-title>
+    <ion-label>
+      <strong>Hostel Code:</strong> <br />
+      <ion-skeleton-text *ngIf="(hostel | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="hostel.hostelCode">{{ hostel.hostelCode }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Room No:</strong> <br />
+      <ion-skeleton-text *ngIf="(hostel | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 *ngIf="hostel.roomNo">{{ hostel.roomNo }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Check In:</strong> <br />
+      <ion-skeleton-text *ngIf="(hostel | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 *ngIf="hostel.checkIn">{{ hostel.checkIn }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Check Out:</strong> <br />
+      <ion-skeleton-text *ngIf="(hostel | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 *ngIf="hostel.checkOut">{{ hostel.checkOut }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-title class="ion-text-center ion-margin"><strong>Outside Hostel</strong></ion-title>
+    <ion-label>
+      <strong>Address:</strong> <br />
+      <ion-skeleton-text *ngIf="(hostel | json) == '{}'" animated style="width: 40%"></ion-skeleton-text>
+      <h3 *ngIf="hostel.address">{{ hostel.address }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>City:</strong> <br />
+      <ion-skeleton-text *ngIf="(hostel | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="hostel.city">{{ hostel.city }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Postcode:</strong> <br />
+      <ion-skeleton-text *ngIf="(hostel | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 *ngIf="hostel.postcode">{{ hostel.postcode }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>State:</strong> <br />
+      <ion-skeleton-text *ngIf="(hostel | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="hostel.state">{{ hostel.state }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Contact No:</strong> <br />
+      <ion-skeleton-text *ngIf="(hostel | json) == '{}'" animated style="width: 30%"></ion-skeleton-text>
+      <h3 *ngIf="hostel.phone">{{ hostel.phone }}</h3>
+      <br />
+    </ion-label>
+
+    <ion-label>
+      <strong>Registration Date:</strong> <br />
+      <ion-skeleton-text *ngIf="(hostel | json) == '{}'" animated style="width: 20%"></ion-skeleton-text>
+      <h3 *ngIf="hostel.dateRegister">{{ hostel.dateRegister }}</h3>
+      <br />
+    </ion-label>
+  </div>
+
+</ion-content>

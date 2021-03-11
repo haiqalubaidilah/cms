@@ -1,0 +1,23 @@
+.row-header {
+  background-color: lightgray;
+  text-align: center;
+}
+
+ion-col {
+  font-size: small;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(175, 175, 175);
+}
+
+.text-end, .debit, .credit {
+    text-align: end;
+}
+
+.debit {
+  color: rgb(0, 202, 0);
+}
+
+.credit {
+  color: red;
+}

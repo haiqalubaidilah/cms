@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Semester Result</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item lines="none">
+      <ion-label>Select semester</ion-label>
+      <ion-select lines="none" [(ngModel)]="sem" (ionChange)="changeURL()">
+        <ion-select-option value="1">1 [0519]</ion-select-option>
+        <ion-select-option value="2">2 [0919]</ion-select-option>
+        <ion-select-option value="3">3 [0120]</ion-select-option>
+        <ion-select-option value="4">4 [0720]</ion-select-option>
+        <ion-select-option disabled value="5">5 [1120]</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+  
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+    [disabled]="!url"
+    class="ion-margin"
+    color="primary"
+    [href]="url"
+    expand="block"
+    fill="solid"
+    shape="rectangle"
+  >
+    Download
+  </ion-button>
+  </ion-toolbar>
+</ion-footer>

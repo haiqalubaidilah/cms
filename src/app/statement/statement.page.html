@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Account Statement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid fixed>
+    <ion-row class="row-header">
+      <ion-col size="2.4"> Date </ion-col>
+      <ion-col size="2.4"> Ref. </ion-col>
+      <ion-col size="2.4"> Debit </ion-col>
+      <ion-col size="2.4"> Credit </ion-col>
+      <ion-col size="2.4"> O/S </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let statement of statements">
+      <ion-col size="2.4" class="ion-text-center">
+        {{ statement.date }}
+      </ion-col>
+      <ion-col size="2.4" class="ion-text-center">
+        {{ statement.ref }}
+      </ion-col>
+      <ion-col size="2.4" class="debit"> {{ statement.debit }} </ion-col>
+      <ion-col size="2.4" class="credit"> {{ statement.credit }} </ion-col>
+      <ion-col size="2.4" class="text-end"> {{ statement.os }} </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="ion-padding">
+    <ion-label>
+      <strong>Reference:</strong>
+      <h3>
+        <strong>I:</strong> Invois <br />
+        <strong>B:</strong> Bayaran <br />
+        <strong>P:</strong> Pelarasan
+      </h3>
+    </ion-label>
+  </div>
+  
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+    class="ion-margin"
+    href="https://epay.kptm.edu.my/"
+    expand="block"
+    fill="solid"
+    shape="rectangle"
+  >
+    Pay Now
+  </ion-button>
+  </ion-toolbar>
+</ion-footer>

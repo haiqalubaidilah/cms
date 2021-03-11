@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Login Help</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="center">
+    <ion-card>
+      <ion-card-header class="ion-text-center">
+        <ion-card-title> Reset Account Password </ion-card-title>
+        <ion-card-subtitle>
+          Enter the email that is associated with your account to reset your
+          password.
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            class="ion-text-center"
+            type="email"
+            [(ngModel)]="user.email"
+            placeholder="Type your email here..."
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-button
+          (click)="sendEmail(user)"
+          style="margin-top: 5%"
+          expand="block"
+          fill="solid"
+          shape="round"
+        >
+          Next
+        </ion-button>
+        <ion-button
+          (click)="showCard = !showCard"
+          expand="block"
+          fill="clear"
+          shape="round"
+        >
+          Other issues
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="showCard">
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>
+          Other Issues?
+        </ion-card-title>
+        <ion-card-subtitle>
+          Contact the ICT department for further enquiry.
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <strong>Kolej Universiti Poly-Tech MARA Kuala Lumpur</strong>
+        <p>
+          Jalan 6/91, Taman Shamelin Perkasa 56100 Cheras, Kuala Lumpur <br />
+          General Line: +603 9206 9700 <br />
+          Tel: +603 92837175 (ICT) <br />
+          E-mail : ictkl@kuptm.edu.my <br />
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

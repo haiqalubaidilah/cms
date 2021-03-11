@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Service Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card class="ion-padding">
+    <h6 class="info">Please fill in this form for us to serve you better</h6>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input
+        required
+        type="email"
+        placeholder="Enter your Email"
+        [(ngModel)]="report.email"
+      ></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Enquiry Type</ion-label>
+      <ion-select
+        required
+        value="enquiry"
+        placeholder="Select enquiry type"
+        [(ngModel)]="report.enquiry"
+      >
+        <ion-select-option value="General">General</ion-select-option>
+        <ion-select-option value="Admission">Admission</ion-select-option>
+        <ion-select-option value="ICT">ICT</ion-select-option>
+        <ion-select-option value="Quotation">Fee</ion-select-option>
+        <ion-select-option value="Complaint">Complaint</ion-select-option>
+        <ion-select-option value="Others">Others</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea
+        required
+        rows="5"
+        placeholder="Describe your issue(s) here..."
+        [(ngModel)]="report.description"
+      ></ion-textarea>
+    </ion-item>
+  </ion-card>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      class="ion-margin"
+      color="primary"
+      (click)="createReport(report)"
+      type="submit"
+      expand="block"
+      fill="solid"
+      shape="rectangle"
+    >
+      Submit
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label> <strong>Authentication</strong> </ion-label>
+    </ion-list-header>
+    <ion-item lines="none" button="true" (click)="changePasswordAlert()">
+      <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+      <ion-label>Change password</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label> <strong>Theme</strong> </ion-label>
+    </ion-list-header>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="moon-outline"></ion-icon>
+      <ion-label>Dark mode</ion-label>
+      <ion-toggle [checked]="darkModeState" (ionChange)="toggleDarkMode()"  slot="end"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label><strong>Miscellaneous</strong> </ion-label>
+    </ion-list-header>
+    <ion-item lines="none" [routerLink]="['/help']">
+      <ion-icon slot="start" name="help-circle-outline"></ion-icon>
+      <ion-label>Help</ion-label>
+    </ion-item>
+    <ion-item lines="none" [routerLink]="['/about']">
+      <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+      <ion-label>About us</ion-label>
+    </ion-item>
+    <ion-item lines="none" [routerLink]="['/terms']">
+      <ion-icon slot="start" name="document-text-outline"></ion-icon>
+      <ion-label>Terms of Service</ion-label>
+    </ion-item>
+    <ion-item lines="none" [routerLink]="['/policy']">
+      <ion-icon slot="start" name="document-lock-outline"></ion-icon>
+      <ion-label>Privacy Policy</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

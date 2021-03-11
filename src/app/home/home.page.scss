@@ -1,0 +1,59 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+//------------------CUSTOM CSS------------------\\
+
+
+.text-bottom {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  font-size: 0.7rem;
+  text-transform: capitalize;
+}
+
+.button-size {
+  height: 90px;
+}
+
+ion-col {
+  height: auto;
+}
+
+ion-icon {
+  margin-bottom: 5px;
+}
+
+.image-center {
+  margin: 4% auto;
+}
+
+#greet {
+  margin-top: 0;
+  margin-block-start: 0;
+}

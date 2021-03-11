@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>About Us</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="assets/kuptm.jpg" />
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>
+        <h6 style="margin-block-start: 0">
+          Kolej Universiti Poly-Tech MARA Kuala Lumpur
+        </h6>
+      </ion-card-title>
+      <ion-card-subtitle>Trustworthy, Resilient, Blessed</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Jalan 6/91, Taman Shamelin Perkasa 56100 Cheras, Kuala Lumpur <br />
+        General Line: +603 9206 9700 <br />
+        Tel: +603 92837186 (Marketing) <br />
+        E-mail: marketingkl@kuptm.edu.my <br />
+      </p>
+      <ion-slides style="padding: 10px 0 0 0;" [options]="sliderConfig">
+        <ion-slide *ngFor="let contact of contacts">
+          <ion-chip
+            (click)="redirect(contact.url)"
+            [color]="contact.color"
+            outline="true"
+          >
+            <ion-icon [name]="contact.logo"></ion-icon>
+            <ion-label>{{ contact.title }}</ion-label>
+          </ion-chip>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>
+        <h4>
+          Haiqal Ubaidilah
+        </h4>
+      </ion-card-title>
+      <ion-card-subtitle>Student, Developer</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-slides style="padding: 10px 0 0 0;" [options]="sliderConfig">
+        <ion-slide *ngFor="let contact of devContacts">
+          <ion-chip
+            (click)="redirect(contact.url)"
+            [color]="contact.color"
+            outline="true"
+          >
+            <ion-icon [name]="contact.logo"></ion-icon>
+            <ion-label>{{ contact.title }}</ion-label>
+          </ion-chip>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

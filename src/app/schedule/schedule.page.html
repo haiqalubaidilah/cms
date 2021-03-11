@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Time Table</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title *ngIf="subjects?.length == 0" class="ion-text-center ion-margin"
+    >No subjects can be found</ion-title
+  >
+  <ion-list>
+    <ion-title *ngIf="subjects && subjects?.length != 0" class="ion-text-center ion-margin"
+      >Session {{ userData.session }} | Semester {{ userData.sem }}</ion-title
+    >
+    <ion-item *ngFor="let subject of subjects">
+      <ion-label>
+        <h2>{{ subject.name }} ({{ subject.code }})</h2>
+        <h3>{{ subject.lecturerName }}</h3>
+        <h4>Section: {{ subject.section }}</h4>
+        <p *ngFor="let day of subject.days | keyvalue">
+          {{day.key}} | {{ day.value }}
+        </p>
+      </ion-label>
+    </ion-item>
+
+    <!-- loading animation -->
+    <ng-container *ngIf="!subjects">
+      <ion-skeleton-text
+        animated
+        style="width: 60%; line-height: 1rem; margin: 5% auto"
+      ></ion-skeleton-text>
+      <ion-item *ngFor="let item of [1, 2, 3, 4, 5]">
+        <ion-label>
+          <h2>
+            <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+          </h2>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

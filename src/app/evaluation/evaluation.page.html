@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>S & L Evaluation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title *ngIf="subjects?.length == 0" class="ion-text-center ion-margin"
+    >No subjects or lecturer can be found</ion-title
+  >
+  <ion-list>
+    <ion-title *ngIf="subjects && subjects?.length != 0" class="ion-text-center ion-margin"
+      >Session {{ userData.session }} | Semester {{ userData.sem }}</ion-title
+    >
+    <ion-list-header *ngIf="subjects && subjects?.length != 0">
+      <ion-label>
+        <strong>Subjects</strong>
+      </ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let subject of subjects, let i = index" [routerLink]="['/evaluation-subject', subject.id]">
+      <ion-label>
+        <h2>{{(i+1)}}. {{ subject.name }} ({{ subject.code }})</h2>
+      </ion-label>
+    </ion-item>
+
+    <!-- loading animation -->
+    <div *ngIf="!subjects">
+      <ion-skeleton-text animated style="width: 60%; line-height: 1rem; margin: 5% auto;"></ion-skeleton-text>
+      <ion-item>
+        <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header *ngIf="subjects && subjects?.length != 0">
+      <ion-label >
+        <strong>Lecturers</strong>
+      </ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let subject of subjects, let i = index" [routerLink]="['/evaluation-lecturer', subject.id, subject.lecturerid]">
+      <ion-label>
+        <h2>{{(i+1)}}. {{ subject.lecturerName }}</h2>
+      </ion-label>
+    </ion-item>
+
+    <!-- loading animation -->
+    <div *ngIf="!subjects">
+      <ion-item>
+        <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

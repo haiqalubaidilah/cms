@@ -1,0 +1,53 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Select to navigate</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-list>
+    <!-- <ion-item
+      [routerLink]="['/tabs-page/ereport']"
+      button
+      (click)="dismissPopover()"
+    >
+      <ion-label>Personal Information</ion-label>
+    </ion-item> -->
+
+    <ion-item
+      [routerLink]="['/profile/parent']"
+      button
+      (click)="dismissPopover()"
+    >
+      <ion-label>Parent Information</ion-label>
+    </ion-item>
+
+    <!-- <ion-item
+      [routerLink]="['/routePath']"
+      button
+      (click)="dismissPopover()"
+    >
+      <ion-label>Ko-Q Information</ion-label>
+    </ion-item> -->
+
+    <ion-item
+      [routerLink]="['/profile/sponsorship']"
+      button
+      (click)="dismissPopover()"
+    >
+      <ion-label>Sponsorship Information</ion-label>
+    </ion-item>
+
+    <ion-item
+      [routerLink]="['/profile/hostel']"
+      button
+      (click)="dismissPopover()"
+    >
+      <ion-label>Hostel Information</ion-label>
+    </ion-item>
+
+    <ion-item button (click)="dismissPopover()" lines="none">
+      <ion-label>Close</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

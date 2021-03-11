@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Help</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="ion-padding" style="height: 100%">
+    <ion-card-title class="ion-text-center ion-margin">
+      Frequently Asked Questions
+    </ion-card-title>
+    <ion-searchbar
+      placeholder="Search a question"
+      [(ngModel)]="searchTerm"
+      (ionChange)="setFilteredQuestions()"
+      animated
+      showCancelButton="focus"
+    ></ion-searchbar>
+
+    <ng-container *ngFor="let question of filteredQuestions">
+      <ion-button
+        (click)="question.showMore = !question.showMore"
+        expand="block"
+        fill="solid"
+        shape="round"
+      >
+        {{ question.title }}
+      </ion-button>
+
+      <ion-card class="ion-padding" [hidden]="!question.showMore">
+        <ion-label> {{ question.answer }}</ion-label>
+        <!-- <video
+          *ngIf="question.showVideo"
+          width="100%"
+          controls="controls"
+          preload="metadata"
+          webkit-playsinline="webkit-playsinline"
+          class="videoPlayer"
+        >
+          <source src="/assets/testvid.mp4" type="video/mp4" />
+        </video> -->
+        <iframe
+          *ngIf="question.showVideo"
+          width="100%"
+          height="50%"
+          src="https://www.youtube.com/embed/94AS3rORl8k"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </ion-card>
+    </ng-container>
+    <ion-card-title
+      class="ion-text-center ion-margin"
+      *ngIf="filteredQuestions.length == 0"
+    >
+      No result matched the keyword
+    </ion-card-title>
+  </ion-card>
+</ion-content>

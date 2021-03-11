@@ -1,0 +1,203 @@
+<ion-header [translucent]="false">
+  <ion-toolbar color="primary">
+    <ion-title> Home </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+      <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- GREETINGS CARD -->
+  <ion-card class="ion-text-center">
+    <ion-avatar class="image-center">
+      <img src="/assets/pp.jpg" />
+    </ion-avatar>
+
+    <h4 id="greet" *ngIf="userInfo.nickname">Hi, {{userInfo.nickname}}</h4>
+    <p *ngIf="userInfo.lastLogin">
+      Last login {{ userInfo.lastLogin.toDate() | date: 'dd MMM y HH:mm:ss'}}
+    </p>
+
+    <!-- loading animation -->
+    <ion-skeleton-text
+      *ngIf="!userInfo.nickname"
+      animated
+      style="width: 40%; margin: 5% auto; line-height: 1rem;"
+    ></ion-skeleton-text>
+    <ion-skeleton-text
+      *ngIf="!userInfo.lastLogin"
+      animated
+      style="width: 60%; margin: 5% auto; line-height: 1rem;"
+    ></ion-skeleton-text>
+  </ion-card>
+
+  <!-- QUICK SHORTCUTS CARD -->
+  <ion-card>
+    <ion-grid>
+      <!-- ROW 1 -->
+      <ion-row>
+        <ion-col size="4" size-md="6">
+          <ion-button
+            (click)="navToPage('schedule')"
+            expand="block"
+            fill="solid"
+            shape="rectangle"
+            size="undefined"
+            class="button-size"
+          >
+            <div class="text-bottom">
+              <ion-icon name="calendar-outline" size="large"></ion-icon>
+              Time <br />
+              Table
+            </div>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="4" size-md="6">
+          <ion-button
+            [routerLink]="['/statement']"
+            routerLinkActive="router-link-active"
+            expand="block"
+            fill="solid"
+            shape="rectangle"
+            size="undefined"
+            class="button-size"
+          >
+            <div class="text-bottom">
+              <ion-icon name="wallet-outline" size="large"></ion-icon>
+              Account <br />
+              Statement
+            </div>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="4" size-md="6">
+          <!-- [routerLink]="['/evaluation']" -->
+          <ion-button
+            (click)="navToPage('evaluation')"
+            expand="block"
+            fill="solid"
+            shape="rectangle"
+            size="undefined"
+            class="button-size"
+          >
+            <div class="text-bottom">
+              <ion-icon name="people-outline" size="large"></ion-icon>
+              S & L <br />
+              Evaluation
+            </div>
+          </ion-button>
+        </ion-col>
+
+        <!-- ROW 2 -->
+        <ion-col size="4" size-md="6">
+          <!-- [routerLink]="['/sub-register']" -->
+          <ion-button
+            (click)="navToPage('sub-register')"
+            expand="block"
+            fill="solid"
+            shape="rectangle"
+            size="undefined"
+            class="button-size"
+          >
+            <div class="text-bottom">
+              <ion-icon name="list-outline" size="large"></ion-icon>
+              Subject <br />
+              Registration
+            </div>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="4" size-md="6">
+          <ion-button
+            (click)="navToPage('sub-verify')"
+            expand="block"
+            fill="solid"
+            shape="rectangle"
+            size="undefined"
+            class="button-size"
+          >
+            <div class="text-bottom">
+              <ion-icon name="checkmark-circle-outline" size="large"></ion-icon>
+              Subject <br />
+              Verification
+            </div>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="4" size-md="6">
+          <ion-button
+            [routerLink]="['/exam-slip']"
+            expand="block"
+            fill="solid"
+            shape="rectangle"
+            size="undefined"
+            class="button-size"
+          >
+            <div class="text-bottom">
+              <ion-icon name="document-text-outline" size="large"></ion-icon>
+              Exam <br />
+              Slip
+            </div>
+          </ion-button>
+        </ion-col>
+
+        <!-- ROW 3 -->
+        <ion-col size="4" size-md="6">
+          <ion-button
+            [routerLink]="['/sem-result']"
+            expand="block"
+            fill="solid"
+            shape="rectangle"
+            size="undefined"
+            class="button-size"
+          >
+            <div class="text-bottom">
+              <ion-icon name="school-outline" size="large"></ion-icon>
+              Semester <br />
+              Result
+            </div>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="4" size-md="6">
+          <ion-button
+            [routerLink]="['/view-report']"
+            routerLinkActive="router-link-active"
+            expand="block"
+            fill="solid"
+            shape="rectangle"
+            size="undefined"
+            class="button-size"
+          >
+            <div class="text-bottom">
+              <ion-icon name="megaphone-outline" size="large"></ion-icon>
+              Service <br />
+              Report
+            </div>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="4" size-md="6">
+          <ion-button
+            [routerLink]="['/settings']"
+            expand="block"
+            fill="solid"
+            shape="rectangle"
+            size="undefined"
+            class="button-size"
+          >
+            <div class="text-bottom">
+              <ion-icon name="settings-outline" size="large"></ion-icon>
+              <br />
+              Settings
+            </div>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>
